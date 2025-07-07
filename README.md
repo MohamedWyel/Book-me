@@ -20,8 +20,6 @@ This project is designed to provide a simple, user-friendly platform to search, 
 
 - **Frontend**: React / Tailwind CSS  
 - **Backend**: Node.js / Express / MongoDB  
-- **Authentication**: JWT  
-- **Deployment**: Render / Netlify / Vercel
 
 ---
 
