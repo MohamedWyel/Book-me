@@ -16,7 +16,7 @@ This project is designed to provide a simple, user-friendly platform to search, 
 
 ---
 
-## 📦 Tech Stack (Example)
+## 📦 Tech Stack 
 
 - **Frontend**: React / Tailwind CSS  
 - **Backend**: Node.js / Express / MongoDB  
