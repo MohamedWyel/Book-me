@@ -18,7 +18,7 @@ This project is designed to provide a simple, user-friendly platform to search, 
 
 ## 📦 Tech Stack 
 
-- **Frontend**: React / Tailwind CSS  
+- **Frontend**: React / Bootstrap 5
 - **Backend**: Node.js / Express / MongoDB  
 
 ---
