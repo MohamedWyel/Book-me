@@ -33,6 +33,6 @@ This project is designed to provide a simple, user-friendly platform to search, 
 
 ## 🍀 Wish Us Luck!
 
-We're excited to build something awesome.  
+We're excited to build something awesome.
+This project means a lot to us! I worked on it with my awesome teammate Malak , and together we built this hotel booking platform from scratch.
 **Stay tuned, and wish us luck on this journey!** 🚀
-
