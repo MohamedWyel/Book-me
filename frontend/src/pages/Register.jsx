@@ -7,13 +7,47 @@ const Register = ({ setUsername, darkMode }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const creatUser=async()=>{
+    try{
+    const response =await fetch('http://localhost:5000/api/auth/register',
+     { method:"post",
+      headers:{
+        "Content-Type" :"application/json"
+      },
+      body:JSON.stringify({
+        userName:fullName ,
+        email,
+        password
+      })
+     }
+    )
+    const data =await response.json();
+    if(response.ok){
+      alert("account created")
+      console.log("Account create")
+      return data;
+    }else{
+      alert("failed to create account");
+      console.log("failed")
+      return null;
+    }
+  }catch(err){
+    console.log(err);
+    return null;
+  }
+    
+  }
+
+  const handleRegister = async(e) => {
     e.preventDefault();
     if (fullName.trim() && email.trim() && password.trim()) {
+      const user =await creatUser();
+      if(user){
       localStorage.setItem('username', fullName);
       localStorage.setItem('email', email);
       setUsername(fullName);
       navigate('/');
+      }
     }
   };
 
