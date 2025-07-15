@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Hotels from "./pages/Hotels"
+import HotelDetails from "./pages/HotelDetails";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -39,14 +41,6 @@ function App() {
                   <Link className="nav-link" to="/aboutUs">About</Link>
                 </li>
               </ul>
-
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className={`btn btn-sm btn-${darkMode ? "light" : "dark"} me-3`}
-              >
-                {darkMode ? "Light ☀️" : "Dark 🌙"}
-              </button>
-
               {username ? (
                 <>
                   <span className="me-3">👋 {username}</span>
@@ -58,6 +52,12 @@ function App() {
                   <Link to="/register" className="btn btn-sm btn-warning">Register</Link>
                 </>
               )}
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`btn btn-sm btn-${darkMode ? "light" : "dark"} me-3`}
+              >
+                {darkMode ? "Light ☀️" : "Dark 🌙"}
+              </button>
             </div>
           </div>
         </nav>
@@ -66,6 +66,8 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs darkMode={darkMode} />} />
           <Route path="/login" element={<Login setUsername={setUsername} darkMode={darkMode} />} />
           <Route path="/register" element={<Register setUsername={setUsername} darkMode={darkMode} />} />
+          <Route path="/hotels" element ={<Hotels setUsername={setUsername} darkMode={darkMode} />} />
+          <Route path="/hotels/:id" element={<HotelDetails setUsername={setUsername} darkMode={darkMode} /> } />
         </Routes>
       </div>
     </Router>

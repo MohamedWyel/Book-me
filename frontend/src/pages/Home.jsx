@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 const Home = ({ darkMode, setDarkMode }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={darkMode ? "bg-dark text-light" : "bg-white text-dark"}>
       <div className="d-flex flex-column min-vh-100">
@@ -32,12 +36,16 @@ const Home = ({ darkMode, setDarkMode }) => {
               <p className="lead mb-4">
                 Your trusted platform to search, compare, and book the best hotels across the globe.
               </p>
-              <button className="btn btn-warning btn-lg fw-bold">Find a Hotel</button>
+              <button 
+                className="btn btn-warning btn-lg fw-bold"
+                onClick={() => navigate('/hotels')}
+              >
+                Find a Hotel
+              </button>
             </div>
-
           </section>
 
-          {/* additional section */}
+          {/* Why Use Section */}
           <section className={`pt-4 pb-5 ${darkMode ? 'bg-dark text-light' : 'bg-light text-dark'} text-center`}>
             <div className="container">
               <h2 className="mb-4 fw-bold text-warning">Why Use Book Me?</h2>
@@ -60,11 +68,17 @@ const Home = ({ darkMode, setDarkMode }) => {
               </div>
             </div>
           </section>
-          {/* interaction section */}
+
+          {/* Call To Action */}
           <section className="py-5 text-center" style={{ backgroundColor: darkMode ? "#1e1e1e" : "#f5f5f5" }}>
             <h2 className="fw-bold mb-3">Ready to Book Your Next Stay?</h2>
             <p className="mb-4">Sign up now and explore amazing hotel deals all over the world.</p>
-            <button className="btn btn-warning btn-lg fw-bold">Get Started</button>
+            <button 
+              className="btn btn-warning btn-lg fw-bold"
+              onClick={() => navigate('/hotels')}
+            >
+              Get Started
+            </button>
           </section>
         </main>
 
@@ -75,7 +89,6 @@ const Home = ({ darkMode, setDarkMode }) => {
         >
           <p className="mb-1">&copy; {new Date().getFullYear()} Book Me. All rights reserved.</p>
         </footer>
-
       </div>
     </div>
   );
