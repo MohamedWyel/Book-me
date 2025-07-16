@@ -55,7 +55,7 @@ function App() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`btn btn-sm btn-${darkMode ? "light" : "dark"} me-3`}
-              >ٍ
+                >
                 {darkMode ? "Light ☀️" : "Dark 🌙"}
               </button>
             </div>
