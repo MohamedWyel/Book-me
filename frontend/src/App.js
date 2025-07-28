@@ -6,6 +6,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Hotels from "./pages/Hotels"
 import HotelDetails from "./pages/HotelDetails";
+import Profile from "./pages/Profile";
+import Bookings from "./pages/Bookings"
+import CancelBooking from "./pages/CancelBooking";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -26,8 +29,9 @@ function App() {
       <div className={darkMode ? "bg-dark text-light" : "bg-white text-dark"}>
         <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>
           <div className="container">
-            <Link className="navbar-brand fw-bold text-warning" to="/">Book Me</Link>
-
+            <Link className="navbar-brand fw-bold text-warning" to="/">
+              <img src="bookme-logo-grayscale-transparent.png" alt="Logo" style={{ width: "auto", height: "40px" }} />
+            </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -43,7 +47,9 @@ function App() {
               </ul>
               {username ? (
                 <>
-                  <span className="me-3">👋 {username}</span>
+                  <Link to="/profile" className="me-3 text-decoration-none text-warning fw-bold">
+                    👋 {username}
+                  </Link>
                   <button onClick={handleLogout} className="btn btn-sm btn-outline-warning">Logout</button>
                 </>
               ) : (
@@ -66,8 +72,11 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs darkMode={darkMode} />} />
           <Route path="/login" element={<Login setUsername={setUsername} darkMode={darkMode} />} />
           <Route path="/register" element={<Register setUsername={setUsername} darkMode={darkMode} />} />
-          <Route path="/hotels" element ={<Hotels setUsername={setUsername} darkMode={darkMode} />} />
-          <Route path="/hotels/:id" element={<HotelDetails setUsername={setUsername} darkMode={darkMode} /> } />
+          <Route path="/hotels" element={<Hotels setUsername={setUsername} darkMode={darkMode} />} />
+          <Route path="/hotels/:id" element={<HotelDetails setUsername={setUsername} darkMode={darkMode} />} />
+          <Route path="/profile" element={<Profile darkMode={darkMode} setUsername={setUsername} />} />
+          <Route path="/bookings" element={<Bookings darkMode={darkMode} setUsername={setUsername} />} />
+          <Route path="/cancel-booking/:id" element={<CancelBooking darkMode={darkMode} setUsername={setUsername} />} />
         </Routes>
       </div>
     </Router>
