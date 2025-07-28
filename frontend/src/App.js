@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import Hotels from "./pages/Hotels"
 import HotelDetails from "./pages/HotelDetails";
 import Profile from "./pages/Profile";
-import Bookings from "./pages/Bookings"
+import Books from "./pages/Books"
 import CancelBooking from "./pages/CancelBooking";
 
 function App() {
@@ -26,44 +26,49 @@ function App() {
 
   return (
     <Router>
-      <div className={darkMode ? "bg-dark text-light" : "bg-white text-dark"}>
-        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>
+      <div className={darkMode ? "bg-black text-light" : "bg-white text-dark"}>
+        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-black" : "navbar-light bg-white shadow-sm"} py-3`}>
           <div className="container">
-            <Link className="navbar-brand fw-bold text-warning" to="/">
-              <img src="bookme-logo-grayscale-transparent.png" alt="Logo" style={{ width: "auto", height: "40px" }} />
+            <Link className="navbar-brand d-flex align-items-center gap-2 fw-bold text-warning" to="/">
+              <img src="bookme-logo-grayscale-transparent.png" alt="BookMe Logo" style={{ width: "auto", height: "40px" }} />
+              <span className="fs-4">Book Me</span>
             </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
               <span className="navbar-toggler-icon"></span>
             </button>
 
             <div className="collapse navbar-collapse" id="navContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">Home</Link>
+                  <Link className="nav-link fw-semibold" to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/aboutUs">About</Link>
+                  <Link className="nav-link fw-semibold" to="/aboutUs">About</Link>
                 </li>
               </ul>
-              {username ? (
-                <>
-                  <Link to="/profile" className="me-3 text-decoration-none text-warning fw-bold">
-                    👋 {username}
-                  </Link>
-                  <button onClick={handleLogout} className="btn btn-sm btn-outline-warning">Logout</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="btn btn-sm btn-outline-primary me-2">Login</Link>
-                  <Link to="/register" className="btn btn-sm btn-warning">Register</Link>
-                </>
-              )}
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className={`btn btn-sm btn-${darkMode ? "light" : "dark"} me-3`}
-              >
-                {darkMode ? "Light ☀️" : "Dark 🌙"}
-              </button>
+
+              <div className="d-flex align-items-center gap-2">
+                {username ? (
+                  <>
+                    <Link to="/profile" className="text-decoration-none text-warning fw-semibold me-2">
+                      👋 {username}
+                    </Link>
+                    <button onClick={handleLogout} className="btn btn-sm btn-outline-warning rounded-pill">Logout</button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" className="btn btn-sm btn-outline-primary rounded-pill">Login</Link>
+                    <Link to="/register" className="btn btn-sm btn-warning rounded-pill">Register</Link>
+                  </>
+                )}
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className={`btn btn-sm rounded-pill btn-${darkMode ? "light" : "dark"}`}
+                  aria-label="Toggle dark mode"
+                >
+                  {darkMode ? "☀️ Light" : "🌙 Dark"}
+                </button>
+              </div>
             </div>
           </div>
         </nav>
@@ -75,7 +80,7 @@ function App() {
           <Route path="/hotels" element={<Hotels setUsername={setUsername} darkMode={darkMode} />} />
           <Route path="/hotels/:id" element={<HotelDetails setUsername={setUsername} darkMode={darkMode} />} />
           <Route path="/profile" element={<Profile darkMode={darkMode} setUsername={setUsername} />} />
-          <Route path="/bookings" element={<Bookings darkMode={darkMode} setUsername={setUsername} />} />
+          <Route path="/books" element={<Books darkMode={darkMode} setUsername={setUsername} />} />
           <Route path="/cancel-booking/:id" element={<CancelBooking darkMode={darkMode} setUsername={setUsername} />} />
         </Routes>
       </div>
