@@ -7,16 +7,31 @@ const Bookings = ({ darkMode }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const storedName = localStorage.getItem('username');
-        const storedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    const storedName = localStorage.getItem('username');
+    let storedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
 
-        if (!storedName) {
-            navigate('/login');
-        } else {
-            setBookings(storedBookings);
-            setTimeout(() => setAnimate(true), 100);
+    if (!storedName) {
+        navigate('/login');
+    } else {
+        const dummyBooking = {
+            id: '5751',
+            hotel: 'Four Seasons',
+            date: '2025-08-10',
+            room: 'Suite Room',
+            guests: 2
+        };
+
+        const exists = storedBookings.some(b => b.id === dummyBooking.id);
+        if (!exists) {
+            storedBookings.push(dummyBooking);
+            localStorage.setItem('bookings', JSON.stringify(storedBookings));
         }
-    }, [navigate]);
+
+        setBookings(storedBookings);
+        setTimeout(() => setAnimate(true), 100);
+    }
+}, [navigate]);
+
 
     return (
         <div
@@ -41,8 +56,7 @@ const Bookings = ({ darkMode }) => {
                     zIndex: 1
                 }}
             >
-                <div
-                    className="mb-4 px-5 py-3 rounded-4 shadow text-center border"
+                <div className="mb-4 px-5 py-3 rounded-4 shadow text-center border"
                     style={{
                         background: 'linear-gradient(135deg, rgba(33, 37, 41, 1), rgba(255, 255, 255, 0.2))',
                         backdropFilter: 'blur(8px)',
@@ -69,7 +83,14 @@ const Bookings = ({ darkMode }) => {
                             <p className="mb-1"><strong>Hotel:</strong> {booking.hotel}</p>
                             <p className="mb-1"><strong>Date:</strong> {booking.date}</p>
                             <p className="mb-1"><strong>Room:</strong> {booking.room}</p>
-                            <p className="mb-0"><strong>Guests:</strong> {booking.guests}</p>
+                            <p className="mb-2"><strong>Guests:</strong> {booking.guests}</p>
+
+                            <button
+                                className="btn btn-sm btn-outline-danger fw-semibold"
+                                onClick={() => navigate(`/cancel-booking/${booking.id}`)}
+                            >
+                                ❌ Cancel Booking
+                            </button>
                         </div>
                     ))
                 )}
@@ -81,4 +102,5 @@ const Bookings = ({ darkMode }) => {
         </div>
     );
 };
+
 export default Bookings;
