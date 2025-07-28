@@ -1,183 +1,243 @@
 [
-    {
-        "comment": "test till malak delete this and fetching the DB",
-        "id": "1",
-        "name": "Hilton Cairo",
-        "location": "Cairo, Egypt",
-        "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg"
-    },
-    {
-        "id": "2",
-        "name": "Marriott Downtown",
-        "location": "New York, USA",
-        "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"
-    },
-    {
-        "id": "3",
-        "name": "The Oberoi",
-        "location": "Mumbai, India",
-        "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
-    },
-    {
-        "id": "4",
-        "name": "Shangri-La Hotel",
-        "location": "Bangkok, Thailand",
-        "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg"
-    },
-    {
-        "id": "5",
-        "name": "Fairmont Nile City",
-        "location": "Cairo, Egypt",
-        "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
-    },
-    {
-        "id": "6",
-        "name": "Four Seasons",
-        "location": "Paris, France",
-        "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg"
-    },
-    {
-        "id": "7",
-        "name": "Ritz-Carlton",
-        "location": "Berlin, Germany",
-        "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg"
-    },
-    {
-        "id": "8",
-        "name": "Atlantis The Palm",
-        "location": "Dubai, UAE",
-        "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg"
-    },
-    {
-        "id": "9",
-        "name": "The Savoy",
-        "location": "London, UK",
-        "image": "https://images.pexels.com/photos/1369327/pexels-photo-1369327.jpeg"
-    },
-    {
-        "id": "10",
-        "name": "Mandarin Oriental",
-        "location": "Tokyo, Japan",
-        "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"
-    },
-    {
-        "id": "11",
-        "name": "InterContinental",
-        "location": "Sydney, Australia",
-        "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg"
-    },
-    {
-        "id": "12",
-        "name": "JW Marriott",
-        "location": "Los Angeles, USA",
-        "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
-    },
-    {
-        "id": "13",
-        "name": "Grand Hyatt",
-        "location": "Seoul, South Korea",
-        "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg"
-    },
-    {
-        "id": "14",
-        "name": "St. Regis",
-        "location": "Rome, Italy",
-        "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
-    },
-    {
-        "id": "15",
-        "name": "Sofitel",
-        "location": "Casablanca, Morocco",
-        "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg"
-    },
-    {
-        "id": "16",
-        "name": "Le Méridien",
-        "location": "Barcelona, Spain",
-        "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg"
-    },
-    {
-        "id": "17",
-        "name": "Radisson Blu",
-        "location": "Oslo, Norway",
-        "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"
-    },
-    {
-        "id": "18",
-        "name": "Waldorf Astoria",
-        "location": "Chicago, USA",
-        "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg"
-    },
-    {
-        "id": "19",
-        "name": "The Peninsula",
-        "location": "Hong Kong, China",
-        "image": "https://images.pexels.com/photos/1369327/pexels-photo-1369327.jpeg"
-    },
-    {
-        "id": "20",
-        "name": "Park Hyatt",
-        "location": "Vienna, Austria",
-        "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
-    },
-    {
-        "id": "21",
-        "name": "The Langham",
-        "location": "Melbourne, Australia",
-        "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg"
-    },
-    {
-        "id": "22",
-        "name": "Hotel Sacher",
-        "location": "Salzburg, Austria",
-        "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg"
-    },
-    {
-        "id": "23",
-        "name": "Burj Al Arab",
-        "location": "Dubai, UAE",
-        "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg"
-    },
-    {
-        "id": "24",
-        "name": "Trump International",
-        "location": "Chicago, USA",
-        "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg"
-    },
-    {
-        "id": "25",
-        "name": "Hotel Adlon",
-        "location": "Berlin, Germany",
-        "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg"
-    },
-    {
-        "id": "26",
-        "name": "Hotel d’Angleterre",
-        "location": "Copenhagen, Denmark",
-        "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"
-    },
-    {
-        "id": "27",
-        "name": "Badrutt’s Palace",
-        "location": "St. Moritz, Switzerland",
-        "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg"
-    },
-    {
-        "id": "28",
-        "name": "Claridge’s",
-        "location": "London, UK",
-        "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg"
-    },
-    {
-        "id": "29",
-        "name": "Taj Lake Palace",
-        "location": "Udaipur, India",
-        "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg"
-    },
-    {
-        "id": "30",
-        "name": "The Plaza",
-        "location": "New York, USA",
-        "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg"
-    }
+  {
+    "comment": "test till malak delete this and fetching the DB",
+    "id": "1",
+    "name": "Hilton Cairo",
+    "location": "Cairo, Egypt",
+    "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg",
+    "price": 150,
+    "rating": 4
+  },
+  {
+    "id": "2",
+    "name": "Marriott Downtown",
+    "location": "New York, USA",
+    "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+    "price": 220,
+    "rating": 5
+  },
+  {
+    "id": "3",
+    "name": "The Oberoi",
+    "location": "Mumbai, India",
+    "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+    "price": 120,
+    "rating": 4
+  },
+  {
+    "id": "4",
+    "name": "Shangri-La Hotel",
+    "location": "Bangkok, Thailand",
+    "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg",
+    "price": 140,
+    "rating": 3
+  },
+  {
+    "id": "5",
+    "name": "Fairmont Nile City",
+    "location": "Cairo, Egypt",
+    "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg",
+    "price": 200,
+    "rating": 5
+  },
+  {
+    "id": "6",
+    "name": "Four Seasons",
+    "location": "Paris, France",
+    "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg",
+    "price": 280,
+    "rating": 5
+  },
+  {
+    "id": "7",
+    "name": "Ritz-Carlton",
+    "location": "Berlin, Germany",
+    "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg",
+    "price": 230,
+    "rating": 4
+  },
+  {
+    "id": "8",
+    "name": "Atlantis The Palm",
+    "location": "Dubai, UAE",
+    "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg",
+    "price": 300,
+    "rating": 5
+  },
+  {
+    "id": "9",
+    "name": "The Savoy",
+    "location": "London, UK",
+    "image": "https://images.pexels.com/photos/1369327/pexels-photo-1369327.jpeg",
+    "price": 260,
+    "rating": 4
+  },
+  {
+    "id": "10",
+    "name": "Mandarin Oriental",
+    "location": "Tokyo, Japan",
+    "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+    "price": 310,
+    "rating": 5
+  },
+  {
+    "id": "11",
+    "name": "InterContinental",
+    "location": "Sydney, Australia",
+    "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg",
+    "price": 180,
+    "rating": 4
+  },
+  {
+    "id": "12",
+    "name": "JW Marriott",
+    "location": "Los Angeles, USA",
+    "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+    "price": 240,
+    "rating": 4
+  },
+  {
+    "id": "13",
+    "name": "Grand Hyatt",
+    "location": "Seoul, South Korea",
+    "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg",
+    "price": 200,
+    "rating": 3
+  },
+  {
+    "id": "14",
+    "name": "St. Regis",
+    "location": "Rome, Italy",
+    "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg",
+    "price": 260,
+    "rating": 5
+  },
+  {
+    "id": "15",
+    "name": "Sofitel",
+    "location": "Casablanca, Morocco",
+    "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg",
+    "price": 190,
+    "rating": 4
+  },
+  {
+    "id": "16",
+    "name": "Le Méridien",
+    "location": "Barcelona, Spain",
+    "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg",
+    "price": 230,
+    "rating": 3
+  },
+  {
+    "id": "17",
+    "name": "Radisson Blu",
+    "location": "Oslo, Norway",
+    "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+    "price": 220,
+    "rating": 4
+  },
+  {
+    "id": "18",
+    "name": "Waldorf Astoria",
+    "location": "Chicago, USA",
+    "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg",
+    "price": 270,
+    "rating": 5
+  },
+  {
+    "id": "19",
+    "name": "The Peninsula",
+    "location": "Hong Kong, China",
+    "image": "https://images.pexels.com/photos/1369327/pexels-photo-1369327.jpeg",
+    "price": 250,
+    "rating": 4
+  },
+  {
+    "id": "20",
+    "name": "Park Hyatt",
+    "location": "Vienna, Austria",
+    "image": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+    "price": 210,
+    "rating": 4
+  },
+  {
+    "id": "21",
+    "name": "The Langham",
+    "location": "Melbourne, Australia",
+    "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg",
+    "price": 200,
+    "rating": 4
+  },
+  {
+    "id": "22",
+    "name": "Hotel Sacher",
+    "location": "Salzburg, Austria",
+    "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg",
+    "price": 180,
+    "rating": 3
+  },
+  {
+    "id": "23",
+    "name": "Burj Al Arab",
+    "location": "Dubai, UAE",
+    "image": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg",
+    "price": 400,
+    "rating": 5
+  },
+  {
+    "id": "24",
+    "name": "Trump International",
+    "location": "Chicago, USA",
+    "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg",
+    "price": 290,
+    "rating": 4
+  },
+  {
+    "id": "25",
+    "name": "Hotel Adlon",
+    "location": "Berlin, Germany",
+    "image": "https://images.pexels.com/photos/261395/pexels-photo-261395.jpeg",
+    "price": 230,
+    "rating": 4
+  },
+  {
+    "id": "26",
+    "name": "Hotel d’Angleterre",
+    "location": "Copenhagen, Denmark",
+    "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+    "price": 220,
+    "rating": 4
+  },
+  {
+    "id": "27",
+    "name": "Badrutt’s Palace",
+    "location": "St. Moritz, Switzerland",
+    "image": "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg",
+    "price": 260,
+    "rating": 5
+  },
+  {
+    "id": "28",
+    "name": "Claridge’s",
+    "location": "London, UK",
+    "image": "https://images.pexels.com/photos/2611028/pexels-photo-2611028.jpeg",
+    "price": 210,
+    "rating": 4
+  },
+  {
+    "id": "29",
+    "name": "Taj Lake Palace",
+    "location": "Udaipur, India",
+    "image": "https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg",
+    "price": 200,
+    "rating": 4
+  },
+  {
+    "id": "30",
+    "name": "The Plaza",
+    "location": "New York, USA",
+    "image": "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg",
+    "price": 280,
+    "rating": 5
+  }
 ]
