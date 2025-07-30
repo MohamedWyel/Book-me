@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import hotelsData from '../data/hotels.json';
 import { Link } from 'react-router-dom';
+import { FaStar ,FaStarHalf } from "react-icons/fa";
 
 const Hotels = ({ darkMode }) => {
     const [hotels, setHotels] = useState([]);
@@ -11,29 +11,60 @@ const Hotels = ({ darkMode }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const hotelsPerPage = 6;
 
-    useEffect(() => {
-        setHotels(hotelsData);
-    }, []);
+    const filterPrice =async(sortBy)=>{
+        try{
+            const response =await fetch(`http://localhost:5000/api/hotel/filter/${sortBy}`)
+            const data = await response.json();
+            setHotels(data)
+        }catch(error){
+            console.log("err")
+        }
+    }
 
-    const filteredHotels = hotels
-        .filter(hotel =>
-            hotel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            hotel.location.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        .filter(hotel => selectedCity === 'All' || hotel.location === selectedCity)
-        .filter(hotel => selectedRating === 'All' || hotel.rating === parseInt(selectedRating));
-
-    const sortedHotels = [...filteredHotels].sort((a, b) => {
-        if (sortBy === 'price-asc') return a.price - b.price;
-        if (sortBy === 'price-desc') return b.price - a.price;
-        if (sortBy === 'rating') return b.rating - a.rating;
-        return 0;
-    });
-
+    const search =async(searchTerm)=>{
+        try{
+            const response =await fetch(`http://localhost:5000/api/hotel/search/${searchTerm}`)
+            const data = await response.json();
+            setHotels(data)
+        }catch(error){
+            console.log("err")
+        }
+        
+    }
+    const fetchHotels=async()=>{
+       try{
+            const response =await fetch('http://localhost:5000/api/hotel/')
+            const data= await response.json()
+            if(data){
+                setHotels(data)
+            }
+       }catch(err){
+            console.log(err)
+       }
+    }
+     const star = (rate)=>{
+        let array = []
+        for(let i =1 ;i<=5;i++){
+            if(rate>=i){
+                array.push(<FaStar key={i} color={"yellow"} />)
+            }
+            else if(rate>=i-0.5){
+                array.push(<FaStarHalf key={i} color={"yellow"}/>)
+            }
+            else{
+                break;
+            }
+        }
+        return array;
+    }
+    useEffect(()=>{
+        fetchHotels();
+    },[])
+    
     const indexOfLastHotel = currentPage * hotelsPerPage;
     const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage;
-    const currentHotels = sortedHotels.slice(indexOfFirstHotel, indexOfLastHotel);
-    const totalPages = Math.ceil(sortedHotels.length / hotelsPerPage);
+    const currentHotels = hotels.slice(indexOfFirstHotel, indexOfLastHotel);
+    const totalPages = Math.ceil(hotels.length / hotelsPerPage);
 
     const cities = [...new Set(hotels.map(h => h.location))];
     const ratings = [...new Set(hotels.map(h => h.rating))];
@@ -45,17 +76,30 @@ const Hotels = ({ darkMode }) => {
 
                 {/* Search & Filters */}
                 <div className="row mb-4 g-3">
-                    <div className="col-md-4">
+                    <div className="col-md-4 d-flex ">
                         <input
                             type="text"
                             placeholder="Search by name or location..."
-                            className="form-control"
+                            className="form-control me-2"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
+                        <button className="btn btn-warning" onClick={()=>{search(searchTerm)}}>
+                            <span>search</span>
+                        </button>
+                        
                     </div>
                     <div className="col-md-3">
-                        <select className="form-select" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+                        <select className="form-select" value={selectedCity} 
+                        onChange={
+                            (e) => {setSelectedCity(e.target.value)
+                            if(e.target.value === "All") {
+                                fetchHotels();
+                            }
+                            else {
+                                search(e.target.value);
+                            }
+                            }}>
                             <option value="All">All Cities</option>
                             {cities.map((city, i) => (
                                 <option key={i} value={city}>{city}</option>
@@ -63,7 +107,15 @@ const Hotels = ({ darkMode }) => {
                         </select>
                     </div>
                     <div className="col-md-2">
-                        <select className="form-select" value={selectedRating} onChange={(e) => setSelectedRating(e.target.value)}>
+                        <select className="form-select" value={selectedRating} 
+                        onChange={(e) => {setSelectedRating(e.target.value)
+                            if(e.target.value === "All") {
+                                fetchHotels();
+                            }
+                            else {
+                                search(e.target.value);
+                            }
+                        }}>
                             <option value="All">All Ratings</option>
                             {ratings.map((rating, i) => (
                                 <option key={i} value={rating}>{rating} ⭐</option>
@@ -71,11 +123,26 @@ const Hotels = ({ darkMode }) => {
                         </select>
                     </div>
                     <div className="col-md-3">
-                        <select className="form-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                        <select 
+                            className="form-select" 
+                            value={sortBy} 
+                            onChange={(e) => {setSortBy(e.target.value)
+                            
+                            let sign = "";
+                            if(e.target.value === "price-asc") sign="lth";
+                            else if(e.target.value === "price-desc") sign="htl";
+                            else if(e.target.value === "rate-low") sign="rhtl";
+                            else if(e.target.value === "rate-high") sign="rltl";
+                            else sign = "";
+                            if (sign) filterPrice(sign);
+                            }}
+                        >
                             <option value="">Sort By</option>
                             <option value="price-asc">Price (Low to High)</option>
                             <option value="price-desc">Price (High to Low)</option>
-                            <option value="rating">Rating (High to Low)</option>
+                            <option value="rate-low">Rating (High to Low)</option>
+                            <option value="rate-high">Rating (Low to High)</option>
+
                         </select>
                     </div>
                 </div>
@@ -84,10 +151,10 @@ const Hotels = ({ darkMode }) => {
                 <div className="row">
                     {currentHotels.length > 0 ? (
                         currentHotels.map(hotel => (
-                            <div className="col-md-4 mb-4" key={hotel.id}>
+                            <div className="col-md-4 mb-4" key={hotel._id}>
                                 <div className="card shadow-sm h-100">
                                     <img
-                                        src={hotel.image || "/default-hotel.jpg"}
+                                        src={hotel.images || "/default-hotel.jpg"}
                                         alt={hotel.name}
                                         className="card-img-top"
                                         style={{ height: '200px', objectFit: 'cover' }}
@@ -95,12 +162,14 @@ const Hotels = ({ darkMode }) => {
                                     <div className="card-body">
                                         <h5 className="card-title fw-bold d-flex justify-content-between">
                                             {hotel.name}
-                                            <span className="text-warning">{'⭐'.repeat(hotel.rating)}</span>
+                                             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                {star(hotel.rating)}
+                                            </div>
                                         </h5>
                                         <p className="card-text">{hotel.location}</p>
-                                        <p className="card-text text-muted">Price: ${hotel.price}</p>
+                                        <p className="card-text text-muted">Avarage Price: ${hotel.avgPrice}</p>
                                         <div className="d-flex justify-content-between">
-                                            <Link to={`/hotels/${hotel.id}`} className="btn btn-warning fw-bold">
+                                            <Link to={`/hotels/${hotel._id}`} className="btn btn-warning fw-bold">
                                                 View Hotel
                                             </Link>
                                             <button className="btn btn-outline-success">Book Now</button>

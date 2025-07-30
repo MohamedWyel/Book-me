@@ -7,8 +7,9 @@ import Register from "./pages/Register";
 import Hotels from "./pages/Hotels"
 import HotelDetails from "./pages/HotelDetails";
 import Profile from "./pages/Profile";
-import Books from "./pages/Books"
+import Books from "./pages/Bookings"
 import CancelBooking from "./pages/CancelBooking";
+import Rooms from "./pages/Rooms";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -82,6 +83,7 @@ function App() {
           <Route path="/profile" element={<Profile darkMode={darkMode} setUsername={setUsername} />} />
           <Route path="/books" element={<Books darkMode={darkMode} setUsername={setUsername} />} />
           <Route path="/cancel-booking/:id" element={<CancelBooking darkMode={darkMode} setUsername={setUsername} />} />
+          <Route path="/rooms/:id" element={<Rooms darkMode={darkMode} />} />
         </Routes>
       </div>
     </Router>
