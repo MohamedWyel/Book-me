@@ -37,6 +37,10 @@ const HotelSchema =new mongoose.Schema({
     },
     features:{
         type:[String]
+    },
+    avgPrice:{
+        type:Number,
+        required:true,
     }
 },{
     timestamps:true

@@ -68,4 +68,42 @@ router.delete("/:id" ,asyncHandler(async(req,res)=>{
     res.status(201).json({message:"hotel deleted" ,deletedHotel})
 }))
 
+router.get("/search/:searchItem",asyncHandler(async(req,res)=>{
+        const isRating = !isNaN(Number(req.params.searchItem));
+        const q={
+            $or:[
+                {name:{$regex:req.params.searchItem ,$options:"i"}},
+                {location:{$regex:req.params.searchItem ,$options:"i"}},
+            ]
+        }
+        if(isRating){
+            q.$or.push({rating:Number(req.params.searchItem)});
+        }
+    const hotels =await Hotel.find(q);
+
+    if(hotels.length===0||!hotels){
+        return res.status(400).json({message:"no hotel found"})
+    }
+    res.status(200).json(hotels)
+}))
+
+router.get("/filter/:sort", asyncHandler(async (req, res) => {
+    let sortOption = {};
+
+    if (req.params.sort === "htl") {
+        sortOption = { avgPrice: -1 }; 
+    } else if (req.params.sort === "lth") {
+        sortOption = { avgPrice: 1 }; 
+    }
+    else if(req.params.sort==="rhtl"){
+        sortOption = { rating: -1 };
+    }
+    else if(req.params.sort==="rltl"){
+        sortOption = { rating: 1 };
+    }
+
+    const hotels = await Hotel.find({}).sort(sortOption);
+    return res.status(200).json(hotels);
+}));
+
 module.exports=router

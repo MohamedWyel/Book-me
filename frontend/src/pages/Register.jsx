@@ -6,14 +6,61 @@ const Register = ({ setUsername, darkMode }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [wrongEmail, setWrongEmail] = useState(false);  
+  const [wrongPassword, setWrongPassword] = useState(false);
+  const [emailExists, setEmailExists] = useState(false);
 
-  const handleRegister = (e) => {
+  const creatUser=async()=>{
+    try{
+    const response =await fetch('http://localhost:5000/api/auth/register',
+     { method:"post",
+      headers:{
+        "Content-Type" :"application/json"
+      },
+      body:JSON.stringify({
+        userName:fullName ,
+        email,
+        password
+      })
+     }
+    )
+    const data =await response.json();
+    if(response.ok){
+      alert("account created")
+      return data;
+    }else{
+      if(data.message ==="User already exist"){
+        setEmailExists(true);
+      }
+      else if(data.message ==="email not vaild"){
+        setWrongEmail(true);
+      }
+      else if(data.message ==="password not vaild"){
+        setWrongPassword(true);
+      }
+
+      return null;
+    }
+  }catch(err){
+    setEmailExists(false);
+    setWrongEmail(false);
+    setWrongPassword(false);
+    return null;
+  }
+    
+  }
+  
+
+  const handleRegister = async(e) => {
     e.preventDefault();
     if (fullName.trim() && email.trim() && password.trim()) {
+      const user =await creatUser();
+      if(user){
       localStorage.setItem('username', fullName);
       localStorage.setItem('email', email);
       setUsername(fullName);
       navigate('/');
+      }
     }
   };
 
@@ -56,9 +103,18 @@ const Register = ({ setUsername, darkMode }) => {
               type="email"
               className="form-control"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {setEmail(e.target.value)
+                setWrongEmail(false);
+                setEmailExists(false);
+              }}
               required
+              backgroundColor={wrongEmail? "red" :"white"}
             />
+            {wrongEmail && (
+              <div className="text-danger mt-2">
+                Please enter a valid email address.
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -67,10 +123,24 @@ const Register = ({ setUsername, darkMode }) => {
               type="password"
               className="form-control"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {setPassword(e.target.value)
+                setWrongPassword(false);
+                setEmailExists(false);
+              }}
               required
+              backgroundColor={wrongPassword? "red" :"white"}
             />
+            {wrongPassword && (
+              <div className="text-danger mt-2">
+                Password must contain at least one uppercase letter and one lowercase letter
+              </div>
+            )}
           </div>
+          {emailExists && (
+            <div className="text-danger mb-3">
+              Email already exists. go to login page
+            </div>
+          )}
 
           <button type="submit" className="btn btn-warning w-100 fw-bold">Register</button>
         </form>

@@ -1,9 +1,22 @@
-import { useParams } from 'react-router-dom';
-import hotelsData from '../data/hotels.json';
+import { useParams , Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const HotelDetails = () => {
   const { id } = useParams();
-  const hotel = hotelsData.find(h => h.id === id);
+  const [hotel,setHotels]= useState([])
+  const fetchone =async()=>{
+    try{
+      const response =await fetch(`http://localhost:5000/api/hotel/${id}`)
+      const data =await response.json();
+      setHotels(data)
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+  useEffect(()=>{
+    fetchone()
+  },)
 
   if (!hotel) {
     return (
@@ -38,7 +51,7 @@ const HotelDetails = () => {
         }}
       >
         <img
-          src={hotel.image}
+          src={hotel.images}
           alt={hotel.name}
           className="card-img-top rounded-top"
           style={{ height: '400px', objectFit: 'cover' }}
@@ -57,12 +70,9 @@ const HotelDetails = () => {
 
           {/* ✅ الزرين تحت */}
           <div className="d-flex justify-content-between align-items-center mt-4">
-            <button
-              className="btn btn-warning text-dark fw-semibold px-3 py-2 rounded-pill shadow-sm"
-              onClick={() => alert('Room availability feature coming soon!')}
-            >
-              🛏 Show Available Rooms
-            </button>
+            <Link to={`/rooms/${hotel._id}`} className="btn btn-warning text-dark fw-semibold px-3 py-2 rounded-pill shadow-sm">
+              Show Avaliable Rooms
+            </Link>
 
             <a
               href="/hotels"
