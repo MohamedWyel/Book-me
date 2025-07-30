@@ -64,9 +64,9 @@ const HotelDetails = () => {
             <i className="bi bi-geo-alt-fill me-2"></i>{hotel.location}
           </p>
           <p className="card-text text-white-50 fs-5">
-            Welcome to <strong>{hotel.name}</strong>! Experience unmatched luxury and personalized service.
-            Book now and indulge in world-class hospitality at its best.
+            {hotel.description}
           </p>
+          <p className="card-text"><span>Features:</span> {hotel.features?.join(',')}</p>
 
           {/* ✅ الزرين تحت */}
           <div className="d-flex justify-content-between align-items-center mt-4">
